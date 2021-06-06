@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import models.Triangle;
-import servises.StringInputService;
+import services.StringInputService;
 import views.View;
 
 import static org.mockito.Mockito.*;

@@ -1,13 +1,12 @@
 package models;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+public class Figure {
+    protected double square;
+    public void square() {
 
-@Retention(RetentionPolicy.RUNTIME)
-//@Target(ElementType.METHOD)
-public @interface Figure {
-    String name();
-    String desc();
+    }
+    public double getSquare() {
+       return square;
+    }
+
 }

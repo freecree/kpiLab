@@ -2,19 +2,19 @@ package controllers;
 
 import models.Tetragon;
 import models.Triangle;
-import servises.StringInputService;
+import services.StringInputService;
 import views.View;
 
 import java.util.Scanner;
 
 public class Controller {
-    StringInputService stringInpService;
-    Triangle triangle;
-    Tetragon tetragon;
-    View view;
+    private StringInputService stringInpService;
+    private Triangle triangle;
+    private Tetragon tetragon;
+    private View view;
 
     public Controller() {
-        this.stringInpService = new StringInputService(new Scanner(System.in));
+        this.stringInpService = StringInputService.getInstance(new Scanner(System.in));
         this.triangle = new Triangle(0,0,0);
         this.tetragon = new Tetragon(0,0,0,0);
         this.view = new View();

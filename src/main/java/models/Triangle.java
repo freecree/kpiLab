@@ -1,16 +1,17 @@
 package models;
 
-public class Triangle implements IFigure {
-    protected double side1, side2, side3;
+public class Triangle extends Figure {
+    double side1, side2, side3;
     private double square;
     public Triangle(double s1, double s2, double s3) {
         this.side1 = s1;
         this.side2 = s2;
         this.side3 = s3;
     }
+    Triangle() {}
 
 
-    @Figure(name = "square3",
+    @FigureAnnotation(name = "square3",
     desc = "Считает площадь треугольника")
     public void square() {
         double p = (side1 + side2 + side3)/2;

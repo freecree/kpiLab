@@ -1,7 +1,7 @@
 import controllers.Controller;
-import models.Figure;
-import models.IFigure;
+import models.FigureAnnotation;
 import models.Tetragon;
+import models.Triangle;
 import proxy.CustomInvocationHandler;
 
 import java.lang.annotation.Annotation;
@@ -19,7 +19,7 @@ public class Main {
         for (Method m : tetragon.getClass().getDeclaredMethods()) {
             m.setAccessible(true);
             //System.out.println(m);
-            if (m.isAnnotationPresent(Figure.class)) {
+            if (m.isAnnotationPresent(FigureAnnotation.class)) {
                 try {
                     m.invoke(tetragon);
                 } catch (IllegalAccessException e) {
@@ -50,23 +50,35 @@ public class Main {
         }
 
         System.out.println("Proxy:");
-        Tetragon figure = new Tetragon(1,2,3,4);
-        CustomInvocationHandler invocationHandler = new CustomInvocationHandler(figure);
-        IFigure f = (IFigure) Proxy.newProxyInstance(IFigure.class.getClassLoader(),
-            new Class[] { IFigure.class },
-            invocationHandler);
-        f.square();
-        f.getSide1();
+//        Tetragon figure = new Tetragon(1,2,3,4);
+//        CustomInvocationHandler invocationHandler = new CustomInvocationHandler(figure);
+//        Tetragon f = (Tetragon) Proxy.newProxyInstance(Tetragon.class.getClassLoader(),
+//            new Class[] { Tetragon.class },
+//            invocationHandler);
+//        f.square();
+//        f.getSide1();
         //f.setSide1(6);
 
-        controllers.Controller controller = new Controller();
-        controller.triangleIn();
-        controller.triangleOut();
-        controller.triangleSquareOut();
+        Tetragon tetragon1 = new Tetragon.Builder()
+                .setSide1(2)
+                .setSide2(3)
+                .setSide3(4)
+                .setSide4(5)
+                .build();
+        System.out.println("Sides: ");
+        System.out.println(tetragon1.getSide1());
+        System.out.println(tetragon1.getSide2());
+        System.out.println(tetragon1.getSide3());
+        System.out.println(tetragon1.getSide4());
 
-        controller.tetragonIn();
-        controller.tetragonOut();
-        controller.tetragonSquareOut();
+//        controllers.Controller controller = new Controller();
+//        controller.triangleIn();
+//        controller.triangleOut();
+//        controller.triangleSquareOut();
+//
+//        controller.tetragonIn();
+//        controller.tetragonOut();
+//        controller.tetragonSquareOut();
     }
 
 }
