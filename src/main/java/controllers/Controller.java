@@ -1,5 +1,7 @@
 package controllers;
 
+import commands.FigureOutCommand;
+import commands.TriangleOutCommand;
 import models.Tetragon;
 import models.Triangle;
 import services.StringInputService;
@@ -12,23 +14,29 @@ public class Controller {
     private Triangle triangle;
     private Tetragon tetragon;
     private View view;
+    private FigureOutCommand figureOutCommand;
 
     public Controller() {
         this.stringInpService = StringInputService.getInstance(new Scanner(System.in));
         this.triangle = new Triangle(0,0,0);
         this.tetragon = new Tetragon(0,0,0,0);
         this.view = new View();
+        this.figureOutCommand = new TriangleOutCommand();
     }
 
-    public Controller(StringInputService stringInpService, Triangle triangle, Tetragon tetragon, View view) {
+    public Controller(StringInputService stringInpService, Triangle triangle, Tetragon tetragon, View view, FigureOutCommand figureOutCommand) {
         this.stringInpService = stringInpService;
         this.triangle = triangle;
         this.tetragon = tetragon;
         this.view = view;
+        this.figureOutCommand = figureOutCommand;
+    }
+
+    public void figureOut() {
+        figureOutCommand.execute(triangle, tetragon, view);
     }
 
     // Triangle
-
     public void triangleIn() {
         String inp = stringInpService.ask("Введите 3 стороны триугольника (Через пробел): ");
         String[] args = inp.split(" ");

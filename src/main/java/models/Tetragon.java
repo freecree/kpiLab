@@ -1,7 +1,7 @@
 package models;
 
 //@Deprecated
-public class Tetragon extends Triangle {
+public class Tetragon extends Triangle implements IFigure {
     private double side4;
     private double diagonal1, diagonal2;
     private double square;
@@ -11,6 +11,16 @@ public class Tetragon extends Triangle {
         this.side4 = s4;
     }
     public Tetragon() {}
+
+    @Override
+    public String toString() {
+        return "Tetragon{" +
+                "side4=" + side4 +
+                ", diagonal1=" + diagonal1 +
+                ", diagonal2=" + diagonal2 +
+                ", square=" + square +
+                '}';
+    }
 
     public void setSide4(double side4) {
         this.side4 = side4;

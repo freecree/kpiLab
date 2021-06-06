@@ -1,5 +1,6 @@
 package controllers;
 
+import commands.FigureOutCommand;
 import models.Tetragon;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,6 +17,8 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class ControllerIT {
     @Mock
+    FigureOutCommand command;
+    @Mock
     Triangle triangle;
     @Mock
     Tetragon tetragon;
@@ -27,7 +30,7 @@ class ControllerIT {
 
     @BeforeEach
     public void onSetUp() {
-        controller = new Controller(stringInpService, triangle, tetragon, view);
+        controller = new Controller(stringInpService, triangle, tetragon, view, command);
     }
 
     //Triangle testing

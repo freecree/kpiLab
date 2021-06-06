@@ -70,15 +70,23 @@ public class Main {
         System.out.println(tetragon1.getSide2());
         System.out.println(tetragon1.getSide3());
         System.out.println(tetragon1.getSide4());
+        Triangle triangle = new Triangle(3, 4, 5);
+        Triangle triangle1 = triangle.clone();
+        System.out.println("Треугольник: ");
+        System.out.println(triangle);
+        System.out.println("Копия треугольника: ");
+        System.out.println(triangle1);
 
-//        controllers.Controller controller = new Controller();
-//        controller.triangleIn();
-//        controller.triangleOut();
-//        controller.triangleSquareOut();
-//
-//        controller.tetragonIn();
-//        controller.tetragonOut();
-//        controller.tetragonSquareOut();
+        controllers.Controller controller = new Controller();
+        controller.triangleIn();
+        controller.triangleOut();
+        controller.triangleSquareOut();
+
+        controller.tetragonIn();
+        controller.tetragonOut();
+        controller.tetragonSquareOut();
+        System.out.println("Main figure: ");
+        controller.figureOut();
     }
 
 }

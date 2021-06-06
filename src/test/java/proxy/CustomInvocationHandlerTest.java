@@ -1,9 +1,9 @@
 package proxy;
 
+import models.IFigure;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import models.Figure;
 import models.Tetragon;
 
 import java.lang.reflect.Proxy;
@@ -16,7 +16,8 @@ class CustomInvocationHandlerTest {
     @Test
     @DisplayName("Test for not allowing run setters with reflection")
     void invoke() {
-        Tetragon figure = new Tetragon(1,2,3,4);
+        IFigure figure;
+        figure = new Tetragon(1,2,3,4);
         CustomInvocationHandler invocationHandler = new CustomInvocationHandler(figure);
         Tetragon f = (Tetragon) Proxy.newProxyInstance(Tetragon.class.getClassLoader(),
                 new Class[] { Tetragon.class },
