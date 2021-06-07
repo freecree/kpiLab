@@ -1,6 +1,8 @@
 package models;
 
-//@Deprecated
+import org.springframework.stereotype.Component;
+
+@Component
 public class Tetragon extends Triangle implements IFigure {
     private double side4;
     private double diagonal1, diagonal2;

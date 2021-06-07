@@ -4,19 +4,30 @@ import commands.FigureOutCommand;
 import commands.TriangleOutCommand;
 import models.Tetragon;
 import models.Triangle;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import services.StringInputService;
 import views.View;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 import java.util.Scanner;
 
-public class Controller {
+@Controller
+public class FigureController {
+    @Autowired
     private StringInputService stringInpService;
+    @Autowired
     private Triangle triangle;
+    @Autowired
     private Tetragon tetragon;
+    @Autowired
     private View view;
+    @Autowired
+    @Qualifier("triangleOutCommand")
     private FigureOutCommand figureOutCommand;
 
-    public Controller() {
+    public FigureController() {
         this.stringInpService = StringInputService.getInstance(new Scanner(System.in));
         this.triangle = new Triangle(0,0,0);
         this.tetragon = new Tetragon(0,0,0,0);
@@ -24,7 +35,7 @@ public class Controller {
         this.figureOutCommand = new TriangleOutCommand();
     }
 
-    public Controller(StringInputService stringInpService, Triangle triangle, Tetragon tetragon, View view, FigureOutCommand figureOutCommand) {
+    public FigureController(StringInputService stringInpService, Triangle triangle, Tetragon tetragon, View view, FigureOutCommand figureOutCommand) {
         this.stringInpService = stringInpService;
         this.triangle = triangle;
         this.tetragon = tetragon;

@@ -1,14 +1,14 @@
-import controllers.Controller;
+import config.SpringConfig;
+import controllers.FigureController;
 import models.FigureAnnotation;
 import models.Tetragon;
 import models.Triangle;
-import proxy.CustomInvocationHandler;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 
 public class Main {
@@ -59,34 +59,40 @@ public class Main {
 //        f.getSide1();
         //f.setSide1(6);
 
-        Tetragon tetragon1 = new Tetragon.Builder()
-                .setSide1(2)
-                .setSide2(3)
-                .setSide3(4)
-                .setSide4(5)
-                .build();
-        System.out.println("Sides: ");
-        System.out.println(tetragon1.getSide1());
-        System.out.println(tetragon1.getSide2());
-        System.out.println(tetragon1.getSide3());
-        System.out.println(tetragon1.getSide4());
-        Triangle triangle = new Triangle(3, 4, 5);
-        Triangle triangle1 = triangle.clone();
-        System.out.println("Треугольник: ");
-        System.out.println(triangle);
-        System.out.println("Копия треугольника: ");
-        System.out.println(triangle1);
+//        Tetragon tetragon1 = new Tetragon.Builder()
+//                .setSide1(2)
+//                .setSide2(3)
+//                .setSide3(4)
+//                .setSide4(5)
+//                .build();
+//        System.out.println("Sides: ");
+//        System.out.println(tetragon1.getSide1());
+//        System.out.println(tetragon1.getSide2());
+//        System.out.println(tetragon1.getSide3());
+//        System.out.println(tetragon1.getSide4());
+//        Triangle triangle = new Triangle(3, 4, 5);
+//        Triangle triangle1 = triangle.clone();
+//        System.out.println("Треугольник: ");
+//        System.out.println(triangle);
+//        System.out.println("Копия треугольника: ");
+//        System.out.println(triangle1);
+//
+//        FigureController figureController = new FigureController();
+//        figureController.triangleIn();
+//        figureController.triangleOut();
+//        figureController.triangleSquareOut();
+//
+//        figureController.tetragonIn();
+//        figureController.tetragonOut();
+//        figureController.tetragonSquareOut();
+//        System.out.println("Main figure: ");
+//        figureController.figureOut();
 
-        controllers.Controller controller = new Controller();
-        controller.triangleIn();
-        controller.triangleOut();
-        controller.triangleSquareOut();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+        FigureController figureController2 = context.getBean("figureController", FigureController.class);
+        figureController2.triangleIn();
+        figureController2.triangleOut();
 
-        controller.tetragonIn();
-        controller.tetragonOut();
-        controller.tetragonSquareOut();
-        System.out.println("Main figure: ");
-        controller.figureOut();
     }
 
 }

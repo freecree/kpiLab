@@ -1,5 +1,8 @@
 package models;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Triangle implements Cloneable{
     double side1, side2, side3;
     private double square;

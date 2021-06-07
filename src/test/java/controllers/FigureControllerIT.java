@@ -15,7 +15,7 @@ import views.View;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class ControllerIT {
+class FigureControllerIT {
     @Mock
     FigureOutCommand command;
     @Mock
@@ -26,11 +26,11 @@ class ControllerIT {
     StringInputService stringInpService;
     @Mock
     View view;
-    Controller controller;
+    FigureController figureController;
 
     @BeforeEach
     public void onSetUp() {
-        controller = new Controller(stringInpService, triangle, tetragon, view, command);
+        figureController = new FigureController(stringInpService, triangle, tetragon, view, command);
     }
 
     //Triangle testing
@@ -40,7 +40,7 @@ class ControllerIT {
         //GIVEN
         when(stringInpService.ask(anyString())).thenReturn("5 4 3");
         //WHEN
-        controller.triangleIn();
+        figureController.triangleIn();
         //THEN
         verify(triangle).setSide1(5.0);
         verify(triangle).setSide2(4.0);
@@ -55,7 +55,7 @@ class ControllerIT {
         when(triangle.getSide2()).thenReturn(4.0);
         when(triangle.getSide3()).thenReturn(3.0);
         //WHEN
-        controller.triangleOut();
+        figureController.triangleOut();
         //THEN
         verify(triangle, times(1)).getSide1();
         verify(triangle, times(1)).getSide2();
@@ -69,7 +69,7 @@ class ControllerIT {
         //GIVEN
         when(triangle.getSquare()).thenReturn(6.0);
         //WHEN
-        controller.triangleSquareOut();
+        figureController.triangleSquareOut();
         //THEN
         verify(triangle).square();
         verify(view).showSquare("Square of triangle: ", 6.0);
@@ -84,7 +84,7 @@ class ControllerIT {
         //GIVEN
         when(stringInpService.ask(anyString())).thenReturn("5 4 3 2");
         //WHEN
-        controller.tetragonIn();
+        figureController.tetragonIn();
         //THEN
         verify(tetragon).setSide1(5.0);
         verify(tetragon).setSide2(4.0);
@@ -101,7 +101,7 @@ class ControllerIT {
         when(tetragon.getSide3()).thenReturn(3.0);
         when(tetragon.getSide4()).thenReturn(2.0);
         //WHEN
-        controller.tetragonOut();
+        figureController.tetragonOut();
         //THEN
         verify(tetragon, times(1)).getSide1();
         verify(tetragon, times(1)).getSide2();
@@ -116,7 +116,7 @@ class ControllerIT {
         //GIVEN
         when(tetragon.getSquare()).thenReturn(6.0);
         //WHEN
-        controller.tetragonSquareOut();
+        figureController.tetragonSquareOut();
         //THEN
         verify(tetragon).square();
         verify(view).showSquare("Square of tetragon: ", 6.0);

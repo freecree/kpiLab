@@ -1,5 +1,8 @@
 package views;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class View {
 
     public void showTriangle(double s1, double s2, double s3) {
